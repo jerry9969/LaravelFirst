@@ -52,5 +52,8 @@ class Client extends Model
         'mob_no' => 'required|digits:10'
     ];
 
+    public function domains(){
+        return $this->hasMany('App\Models\Domain');
+    }
     
 }

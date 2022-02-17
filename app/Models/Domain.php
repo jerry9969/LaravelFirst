@@ -55,5 +55,7 @@ class Domain extends Model
         'expiry_date' => 'required|date'
     ];
 
-    
+    public function client(){
+        return $this->belongsTo('App\Models\Client');
+    }
 }

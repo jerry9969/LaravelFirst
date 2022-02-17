@@ -6,6 +6,7 @@ use App\Http\Requests\CreateDomainRequest;
 use App\Http\Requests\UpdateDomainRequest;
 use App\Repositories\DomainRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Client;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -30,11 +31,12 @@ class DomainController extends AppBaseController
     public function index(Request $request)
     {
         $domains = $this->domainRepository->all();
-
+        //$clients=array('1'=>'abc');
+        //print_r($clients['1']);
+        //exit;
         return view('domains.index')
             ->with('domains', $domains);
     }
-
     /**
      * Show the form for creating a new Domain.
      *
@@ -42,7 +44,10 @@ class DomainController extends AppBaseController
      */
     public function create()
     {
-        return view('domains.create');
+        $clients = Client::pluck('name','id');
+        // dd($clients);
+
+        return view('domains.create',compact('clients'));
     }
 
     /**

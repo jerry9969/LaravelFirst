@@ -11,7 +11,7 @@
         <tbody>
         @foreach($domains as $domain)
             <tr>
-                <td>{{ $domain->client_id }}</td>
+                <td>{{ $domain->client->name }}</td>
             <td>{{ $domain->name }}</td>
             <td>{{ $domain->expiry_date }}</td>
                 <td width="120">

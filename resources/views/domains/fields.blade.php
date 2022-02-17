@@ -1,11 +1,19 @@
+<!-- Client Id -->
+<div class="form-group col-sm-4">
+    {!! Form::label('name', 'Select Client:') !!}
+    {!! Form::select('client_id',$clients,null,['class' => 'form-control']) !!}
+</div>
+
+
+
 <!-- Name Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
+<div class="form-group col-sm-4">
+    {!! Form::label('name', 'Domain Name:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Expiry Date Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-4">
     {!! Form::label('expiry_date', 'Expiry Date:') !!}
     {!! Form::text('expiry_date', null, ['class' => 'form-control','id'=>'expiry_date']) !!}
 </div>

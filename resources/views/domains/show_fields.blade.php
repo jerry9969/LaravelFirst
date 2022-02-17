@@ -1,7 +1,7 @@
 <!-- Client Id Field -->
 <div class="col-sm-12">
     {!! Form::label('client_id', 'Client Id:') !!}
-    <p>{{ $domain->client_id }}</p>
+    <p>{{ $domain->client->name }}</p>
 </div>
 
 <!-- Name Field -->
