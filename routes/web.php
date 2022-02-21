@@ -26,3 +26,6 @@ Route::resource('clients', 'ClientController');
 
 
 Route::resource('domains', 'DomainController');
+
+
+Route::resource('tlds', 'TldController');

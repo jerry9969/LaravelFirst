@@ -53,7 +53,7 @@ class Client extends Model
     ];
 
     public function domains(){
-        return $this->hasMany('App\Models\Domain');
+        return $this->hasMany(Domain::class);
     }
     
 }

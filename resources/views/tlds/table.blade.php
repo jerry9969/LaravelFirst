@@ -1,27 +1,25 @@
 <div class="table-responsive">
-    <table class="table" id="domains-table">
+    <table class="table" id="tlds-table">
         <thead>
         <tr>
-            <th>Client Name</th>
-        <th>Domain Name</th>
-        <th>Expiry Date</th>
+            <th>Name</th>
+        <th>Price</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>
         <tbody>
-        @foreach($domains as $domain)
+        @foreach($tlds as $tld)
             <tr>
-                <td>{{ $domain->client->name }}</td>
-            <td>{{ $domain->name }}</td>
-            <td>{{ $domain->expiry_date }}</td>
+                <td>{{ $tld->name }}</td>
+            <td>{{ $tld->price }}</td>
                 <td width="120">
-                    {!! Form::open(['route' => ['domains.destroy', $domain->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['tlds.destroy', $tld->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('domains.show', [$domain->id]) }}"
+                        <a href="{{ route('tlds.show', [$tld->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('domains.edit', [$domain->id]) }}"
+                        <a href="{{ route('tlds.edit', [$tld->id]) }}"
                            class='btn btn-default btn-xs'>
                             <i class="far fa-edit"></i>
                         </a>

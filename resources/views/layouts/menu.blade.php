@@ -14,3 +14,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('tlds.index') }}"
+       class="nav-link {{ Request::is('tlds*') ? 'active' : '' }}">
+        <p>Tlds</p>
+    </a>
+</li>
+
+
