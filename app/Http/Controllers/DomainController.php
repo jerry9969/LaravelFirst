@@ -61,16 +61,19 @@ class DomainController extends AppBaseController
     }
 
     public function importExcel(Request $request){
-        //return ('Hello');
-        // $validator = Validator::make($request->all(),[
-        //     'file' =>'required|mimes:xls,xlsx' 
-        // ]);
-        // if($validator->passes()){
-        //     return redirect()->back()-with('Success...!');
-        // }else{
-        //     return redirect()->back()->with('error uploading...!');
-        // }
-        Excel::import(new DomainsImportrt,$request->file('file'));
+        //dd($request->file('file'));
+        //$validator = Validator()->make($request->file('file'), [
+          //  'file' => 'required|mimes:xls,xlsx'
+        //]);
+        
+        //if($validator->fails()){
+            //dd('fails');
+            //return redirect()->back()->with('error uploading...!');
+        //}else{
+            //dd('success');
+            //return redirect()->back()->with('Success...!');
+        //}
+        Excel::import(new DomainsImport,$request->file('file'));
     }
     
 
