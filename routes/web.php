@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('domains/import','DomainController@import')->name('domains.import');
+Route::post('domains/import','DomainController@importExcel')->name('domains.importexcel');
 
 
 Route::resource('clients', 'ClientController');

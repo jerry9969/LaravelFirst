@@ -7,9 +7,13 @@ use App\Http\Requests\UpdateDomainRequest;
 use App\Repositories\DomainRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Client;
+use App\imports\DomainsImport;
+use DomainsImport as GlobalDomainsImport;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Contracts\Validation\Validator;
 use Laravel\Ui\Presets\React;
+use Maatwebsite\Excel\Facades\Excel;
 use Response;
 
 class DomainController extends AppBaseController
@@ -56,6 +60,18 @@ class DomainController extends AppBaseController
         return view('domains.import');
     }
 
+    public function importExcel(Request $request){
+        //return ('Hello');
+        // $validator = Validator::make($request->all(),[
+        //     'file' =>'required|mimes:xls,xlsx' 
+        // ]);
+        // if($validator->passes()){
+        //     return redirect()->back()-with('Success...!');
+        // }else{
+        //     return redirect()->back()->with('error uploading...!');
+        // }
+        Excel::import(new DomainsImportrt,$request->file('file'));
+    }
     
 
     /**

@@ -15,14 +15,15 @@
 
         @include('adminlte-templates::common.errors')
 
-        <div class="card">
+        <div class="card form-group">
 
-            {!! Form::open(['route' => 'domains.store']) !!}
+            {!! Form::open(['route' => 'domains.importexcel', 'enctype'=>'multipart/form-data']) !!}
 
             <div class="card-body">
 
-                <div class="row">
-                    
+                <div class="row" >
+                    {!!Form::label('file','Select Excel File To Upload:') !!}
+                    {!!Form::file('file') !!}
                 </div>
 
             </div>
