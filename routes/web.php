@@ -21,6 +21,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('domains/import','DomainController@import')->name('domains.import');
+
 
 Route::resource('clients', 'ClientController');
 
@@ -29,3 +31,4 @@ Route::resource('domains', 'DomainController');
 
 
 Route::resource('tlds', 'TldController');
+//Route::post('/import','ImportController@importExcel');

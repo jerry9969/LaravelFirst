@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Flash;
+use Laravel\Ui\Presets\React;
 use Response;
 
 class DomainController extends AppBaseController
@@ -49,6 +50,13 @@ class DomainController extends AppBaseController
 
         return view('domains.create',compact('clients'));
     }
+
+    //show the import functionality to import excel file with details of clients and domains
+    public function import(Request $request){
+        return view('domains.import');
+    }
+
+    
 
     /**
      * Store a newly created Domain in storage.

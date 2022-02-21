@@ -9,6 +9,10 @@
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
+                       href="{{ route('domains.import') }}">
+                        Import
+                    </a>
+                    <a class="btn btn-primary float-right"
                        href="{{ route('domains.create') }}">
                         Add New
                     </a>

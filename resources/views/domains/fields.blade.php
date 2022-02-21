@@ -1,11 +1,3 @@
-<!-- Client Id -->
-<div class="form-group col-sm-4">
-    {!! Form::label('name', 'Select Client:') !!}
-    {!! Form::select('client_id',$clients,null,['class' => 'form-control']) !!}
-</div>
-
-
-
 <!-- Name Field -->
 <div class="form-group col-sm-4">
     {!! Form::label('name', 'Domain Name:') !!}
