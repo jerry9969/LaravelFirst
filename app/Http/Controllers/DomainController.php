@@ -12,7 +12,7 @@ use DomainsImport as GlobalDomainsImport;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Contracts\Validation\Validator;
-use Laracasts\Flash\Flash as FlashFlash;
+//use Laracasts\Flash\Flash as FlashFlash;
 use Laravel\Ui\Presets\React;
 use Maatwebsite\Excel\Facades\Excel;
 use Response;
@@ -63,20 +63,27 @@ class DomainController extends AppBaseController
 
     public function importExcel(Request $request){
         //dd($request->file('file'));
-        //$validator = Validator()->make($request->file('file'), [
-          //  'file' => 'required|mimes:xls,xlsx'
-        //]);
+        if($request->file('file')){
+            $validator = Validator()->make($request->file('file'), [
+                'file' => 'required|mimes:xls,xlsx'
+            ]);
+            if($validator->fails()){
+                //dd('fails');
+                return redirect(route('domains.import'));//->back();//->with('error uploading...!');
+            }else{
+                //dd('success');
+                return redirect(route('domains.import'));//->back();//->with('Success...!');
+            }
+        }else{
+            Flash::success("Error Uploading");
+            return redirect(route('domains.import'));//->back()->with('error uploading...!');
+        }
         
-        //if($validator->fails()){
-            //dd('fails');
-            //return redirect()->back()->with('error uploading...!');
-        //}else{
-            //dd('success');
-            //return redirect()->back()->with('Success...!');
-        //}
-        Excel::import(new DomainsImport,$request->file('file'));
-        Flash::success('Imported Successfully...!');
-        return redirect(route('domains.importexcel'));
+        
+        
+        //Excel::import(new DomainsImport,$request->file('file'));
+        //Flash::success('Imported Successfully...!');
+        //return redirect(route('domains.importexcel'));
     }
     
 
