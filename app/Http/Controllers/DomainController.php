@@ -12,6 +12,7 @@ use DomainsImport as GlobalDomainsImport;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Contracts\Validation\Validator;
+use Laracasts\Flash\Flash as FlashFlash;
 use Laravel\Ui\Presets\React;
 use Maatwebsite\Excel\Facades\Excel;
 use Response;
@@ -74,6 +75,8 @@ class DomainController extends AppBaseController
             //return redirect()->back()->with('Success...!');
         //}
         Excel::import(new DomainsImport,$request->file('file'));
+        Flash::success('Imported Successfully...!');
+        return redirect(route('domains.importexcel'));
     }
     
 
