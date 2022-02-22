@@ -16,6 +16,7 @@
         @include('adminlte-templates::common.errors')
 
         <div class="card form-group">
+            @include('flash::message')
 
             {!! Form::open(['route' => 'domains.importexcel', 'enctype'=>'multipart/form-data']) !!}
 

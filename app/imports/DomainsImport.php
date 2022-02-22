@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Client;
 use App\Models\Domain;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -19,14 +20,15 @@ class DomainsImport implements ToCollection,WithHeadingRow
     public function collection(Collection $rows)
     {
         foreach($rows as $row){
-            $validator = Validator::make($row, [
+            $validator = Validator::make($row->toArray(), [
                 'mob_no' => 'digits:10',
                 'name' => 'required',
-                'domain_name' => 'requred',
-                'expiry_date' => 'requred|date',
+                'domain_name' => 'required',
+                'expiry_date' => 'required',
             ]);
 
             if($validator->fails()){
+                //dd($validator->errors());
                 continue;
             }
 
@@ -44,11 +46,13 @@ class DomainsImport implements ToCollection,WithHeadingRow
             $domain = Domain::where('name',$row['domain_name'])->first();
             if(! $domain){
                 $domain = Domain::create([
+                    'client_id' => $client_id->id,
                     'name' => $row['domain_name'],
-                    'expiry_date' => $row['expiry_date'],
+                    'expiry_date' => Carbon::createFromFormat('d/m/Y', $row['expiry_date']),
                 ]);
             }
 
+            $domain->expiry_date = Carbon::createFromFormat('d/m/Y', $row['expiry_date']);
             $domain->client_id = $client_id->id;
             $domain->save();
         }       
