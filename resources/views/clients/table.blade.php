@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th>Name</th>
-        <th>Mob No</th>
+            <th>Mob No</th>
             <th colspan="3">Action</th>
         </tr>
         </thead>

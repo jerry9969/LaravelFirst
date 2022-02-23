@@ -59,7 +59,7 @@ class Domain extends Model
         return $this->belongsTo(Client::class);
     }
 
-    public function renewals(){
-        return $this->hasMany(Renewal::class);
-    }
+    // public function renewals(){
+    //     return $this->hasMany(Renewal::class);
+    // }
 }

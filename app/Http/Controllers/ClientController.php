@@ -6,6 +6,8 @@ use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\UpdateClientRequest;
 use App\Repositories\ClientRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Client;
+use App\Models\Domain;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -14,7 +16,7 @@ class ClientController extends AppBaseController
 {
     /** @var ClientRepository $clientRepository*/
     private $clientRepository;
-
+    
     public function __construct(ClientRepository $clientRepo)
     {
         $this->clientRepository = $clientRepo;
@@ -73,15 +75,19 @@ class ClientController extends AppBaseController
     public function show($id)
     {
         $client = $this->clientRepository->find($id);
-
+        //$domainsList = Domain::where('client_id',$id)->pluck('name');
+        //$domainsList = Domain::where('client_id',$id)->get('name');
+        //$domainsList = Client::find($id)->domains->pluck('name');
+        //dd($domainsList);
         if (empty($client)) {
             Flash::error('Client not found');
 
             return redirect(route('clients.index'));
         }
 
-        return view('clients.show')->with('client', $client);
+        return view('clients.show',compact('client'));//->with('client', $client)->with('domain_list',$domainsList);
     }
+
 
     /**
      * Show the form for editing the specified Client.
