@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                                 <?php $i=1; ?>
-                                @foreach($client->domains->sortByDesc('expiry_date') as $domain)
+                                @foreach($client->domains->sortBy('expiry_date') as $domain)
                                     <tr>
                                         <td class="p-2">{{$i}}</td>
                                         <td  class="p-2">{{$domain->name}}</td>
